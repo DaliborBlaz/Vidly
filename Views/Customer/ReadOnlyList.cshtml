@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Vidly2.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@*<div class="form-group">
+    @Html.ActionLink("New Customer", "New", "Customer", new { @class = "btn btn-primary" })
+</div>*@
+
+<table id="customers" class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Membership Type</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                       
+                    },
+                    {
+                        data:"membershipType.membershipName"
+                    },
+                  
+                ]
+            });
+
+            //$("#customers").on("click", ".js-delete", function () {
+            //    var button = $(this);
+            //    bootbox.confirm("Are you sure you want to delete this customer?",function (result) {
+            //        if (result) {
+            //             $.ajax({
+            //            url: "/api/customers/" + button.attr("data-customer-id"),
+            //            method: "DELETE",
+            //                 success: function () {
+            //                table.row(button.parents("tr")).remove().draw();
+
+            //            }
+            //        });
+            //        }
+            //    });
+            
+            //});
+
+        });
+    </script>
+}

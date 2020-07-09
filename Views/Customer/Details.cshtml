@@ -1,0 +1,16 @@
+﻿@model Vidly2.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.Name</h1>
+<ul>
+    <li>Membership Type: @Model.MembershipType.MembershipName</li>
+    @if (Model.DateOfBirth.HasValue)
+    {
+        <li>Date of birth: @Model.DateOfBirth.Value.ToShortDateString()</li>
+    }
+
+</ul>
+
